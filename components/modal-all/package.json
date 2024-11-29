@@ -1,0 +1,6 @@
+{
+  "name": "modal-all",
+  "version": "1.0.0",
+  "main": "src/ModalAll.vue",
+  "private": true
+}

@@ -1,0 +1,6 @@
+{
+  "name": "hall-ty",
+  "version": "1.0.0",
+  "main": "src/HallTy.vue",
+  "private": true
+}

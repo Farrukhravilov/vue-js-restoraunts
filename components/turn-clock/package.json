@@ -1,0 +1,6 @@
+{
+  "name": "turn-clock",
+  "version": "1.0.0",
+  "main": "src/TurnClocks.vue",
+  "private": true
+}

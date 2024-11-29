@@ -1,0 +1,6 @@
+{
+  "name": "food-modal",
+  "version": "1.0.0",
+  "main": "src/FoodModal.vue",
+  "private": true
+}

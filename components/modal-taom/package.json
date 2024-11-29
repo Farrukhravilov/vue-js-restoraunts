@@ -1,0 +1,6 @@
+{
+  "name": "modal-taom",
+  "version": "1.0.0",
+  "main": "src/TaomModal.vue",
+  "private": true
+}

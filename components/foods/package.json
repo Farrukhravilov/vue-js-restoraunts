@@ -1,0 +1,6 @@
+{
+  "name": "foods",
+  "version": "1.0.0",
+  "main": "src/Foods.vue",
+  "private": true
+}

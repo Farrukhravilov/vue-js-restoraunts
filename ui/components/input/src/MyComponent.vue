@@ -1,7 +1,6 @@
 <template>
     <div class="my-component">
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
+        
     </div>
 </template>
 
@@ -24,5 +23,4 @@ h1 {
 
 p {
     color: #333;
-}
-</style>
+}</style>

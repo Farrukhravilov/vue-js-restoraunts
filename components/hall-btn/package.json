@@ -1,0 +1,6 @@
+{
+  "name": "hall-btn",
+  "version": "1.0.0",
+  "main": "src/HallBtn.vue",
+  "private": true
+}

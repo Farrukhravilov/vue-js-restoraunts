@@ -1,0 +1,6 @@
+{
+  "name": "button-download",
+  "version": "1.0.0",
+  "main": "src/ButtonDownload.vue",
+  "private": true
+}

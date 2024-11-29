@@ -1,0 +1,6 @@
+{
+  "name": "hall",
+  "version": "1.0.0",
+  "main": "src/Hall.vue",
+  "private": true
+}

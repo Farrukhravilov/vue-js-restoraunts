@@ -1,7 +1,7 @@
 {
-  "name": "add-items",
+  "name": "menu-delete",
   "version": "1.0.0",
-  "main": "src/AddItem.vue",
+  "main": "src/ModalDelete.vue",
   "private": true,
   "dependencies": {
     "axios": "^1.7.7"

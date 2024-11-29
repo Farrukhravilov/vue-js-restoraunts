@@ -1,0 +1,6 @@
+{
+  "name": "border-wraps",
+  "version": "1.0.0",
+  "main": "src/Border.vue",
+  "private": true
+}

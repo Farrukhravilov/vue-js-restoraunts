@@ -1,0 +1,6 @@
+{
+  "name": "places-table",
+  "version": "1.0.0",
+  "main": "src/PlacesTable.vue",
+  "private": true
+}

@@ -1,0 +1,6 @@
+{
+  "name": "menu-card",
+  "version": "1.0.0",
+  "main": "src/MenuCard.vue",
+  "private": true
+}

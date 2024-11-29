@@ -1,0 +1,6 @@
+{
+  "name": "modal-modal",
+  "version": "1.0.0",
+  "main": "src/menuModal.vue",
+  "private": true
+}

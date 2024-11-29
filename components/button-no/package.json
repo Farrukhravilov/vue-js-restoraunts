@@ -1,0 +1,6 @@
+{
+  "name": "button-no",
+  "version": "1.0.0",
+  "main": "src/ButtonNo.vue",
+  "private": true
+}

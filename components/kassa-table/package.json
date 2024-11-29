@@ -1,0 +1,6 @@
+{
+  "name": "kassa-table",
+  "version": "1.0.0",
+  "main": "src/KassaTable.vue",
+  "private": true
+}

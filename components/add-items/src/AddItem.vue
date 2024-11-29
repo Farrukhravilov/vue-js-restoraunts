@@ -2,18 +2,18 @@
     <div>
         <input v-model="newItem" placeholder="Enter item" />
         <button @click="addItem">Add Item</button>
-        <p v-if="errorMessage" class="error">{{ errorMessage }}</p> <!-- Xato xabari -->
-        <p v-if="successMessage" class="success">{{ successMessage }}</p> <!-- Muvaffaqiyatli xabar -->
+        <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+        <p v-if="successMessage" class="success">{{ successMessage }}</p>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-
+    // asdad
 const newItem = ref('');
-const errorMessage = ref(''); // Xato xabarini saqlash uchun
-const successMessage = ref(''); // Muvaffaqiyatli xabarni saqlash uchun
+const errorMessage = ref('');
+const successMessage = ref('');
 
 const addItem = async () => {
     if (newItem.value) {

@@ -1,0 +1,6 @@
+{
+  "name": "worker-card",
+  "version": "1.0.0",
+  "main": "src/WorkerCard.vue",
+  "private": true
+}

@@ -1,0 +1,6 @@
+{
+  "name": "places-modal",
+  "version": "1.0.0",
+  "main": "src/PlacesModal.vue",
+  "private": true
+}

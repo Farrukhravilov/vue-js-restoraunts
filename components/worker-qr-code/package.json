@@ -1,0 +1,6 @@
+{
+  "name": "worker-qr-code",
+  "version": "1.0.0",
+  "main": "src/WorkerCode.vue",
+  "private": true
+}

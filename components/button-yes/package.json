@@ -1,0 +1,6 @@
+{
+  "name": "button-yes",
+  "version": "1.0.0",
+  "main": "src/ButtonYes.vue",
+  "private": true
+}

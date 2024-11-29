@@ -1,0 +1,6 @@
+{
+  "name": "food-head",
+  "version": "1.0.0",
+  "main": "src/FoodHeader.vue",
+  "private": true
+}

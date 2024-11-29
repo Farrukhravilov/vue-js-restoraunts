@@ -1,0 +1,6 @@
+{
+  "name": "places-all",
+  "version": "1.0.0",
+  "main": "src/PlacesAllPrice.vue",
+  "private": true
+}

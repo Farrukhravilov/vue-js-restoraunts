@@ -1,0 +1,6 @@
+{
+  "name": "food-bott",
+  "version": "1.0.0",
+  "main": "src/FoodBottom.vue",
+  "private": true
+}

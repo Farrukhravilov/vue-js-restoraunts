@@ -1,0 +1,6 @@
+{
+  "name": "places-delete",
+  "version": "1.0.0",
+  "main": "src/PlacesDelete.vue",
+  "private": true
+}

@@ -1,0 +1,6 @@
+{
+  "name": "worker-add",
+  "version": "1.0.0",
+  "main": "src/WorkerAdd.vue",
+  "private": true
+}
