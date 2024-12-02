@@ -1,5 +1,5 @@
 <template>
-  <ModalAll ref="menuModal">
+  <ModalAll ref="MenuModal">
     <template #header>
       <div class="max-780:flex justify-between items-center">
         <h2
@@ -30,10 +30,15 @@
       >
         <label
           for="foodName"
-          class="block font-medium text-[24px] text-[#015812] max-370:text-[20px]"
+          class="flex flex-col gap-[20px] font-medium text-[24px] text-[#015812] max-370:text-[20px]"
         >
           Nomi
-          <input type="text" v-model="menu.title" required />
+          <input
+            type="text"
+            v-model="menu.title"
+            class="border border-[#015812] rounded-[6px]"
+            required
+          />
         </label>
       </form>
     </template>
@@ -83,12 +88,12 @@ export default {
           title: "",
         };
       }
-      console.log(this.$refs.menuModal);
-      this.$refs.menuModal.openModal();
+      // console.log(this.$refs.menuModal);
+      this.$refs.MenuModal.openModal();
     },
     Request() {
       api[this.request](this.menu).then(() => {
-        this.$refs.menuModal.closeModal();
+        this.$refs.MenuModal.closeModal();
         this.$emit("end");
       });
     },

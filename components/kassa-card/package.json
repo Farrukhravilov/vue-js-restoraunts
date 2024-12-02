@@ -1,0 +1,6 @@
+{
+  "name": "kassa-card",
+  "version": "1.0.0",
+  "main": "src/KassaCard.vue",
+  "private": true
+}

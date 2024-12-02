@@ -1,13 +1,14 @@
 <template>
   <div class="border border-[#015812] rounded-[10px] h-[80vh]">
     <div class="bg-white w-full max-w-4xl rounded-lg md:p-6 max-w-[740px]:p-3">
-      <!-- Header -->
       <div
         class="font-bold text-[#015812] pb-2 mb-4 flex align-center items-center p-5 justify-between md:text-[24px] max-w-[740px]:text-[19px]"
       >
-        Naxd pul - 1 220 000 so’m
+        {{ $route.query.title }} -
+        {{ $util.currency($route.query.balance) }} so’m
         <button
           class="border border-[#d3b002] w-[50px] h-[50px] bg-[#d3b002]/10 flex items-center justify-center rounded-[3px]"
+          @click="$refs.postKassa.open('edit')"
         >
           <img src="/src/assets/images/svg/Vector (20).svg" alt="" />
         </button>
@@ -18,32 +19,44 @@
         <table class="w-full border-collapse text-sm">
           <thead class="bg-[#015812]/50 text-[#015812]">
             <tr>
-              <th class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left">Stol</th>
-              <th class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left">sana</th>
-              <th class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left">summa</th>
+              <th
+                class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left"
+              >
+                Stol
+              </th>
+              <th
+                class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left"
+              >
+                sana
+              </th>
+              <th
+                class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left"
+              >
+                summa
+              </th>
             </tr>
           </thead>
           <tbody>
             <!-- Row Template -->
             <tr
-              v-for="(item, index) in transactions"
-              :key="index"
+              v-for="item in Incomes.data"
+              :key="item"
               class="border-b border-[#015812] sm:overflow-visible"
             >
               <td
-              class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812]  md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap "
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                {{ item.kirim }}
+                {{ item?.Order?.Table?.title }}
               </td>
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap "
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                {{ item.date }}
+                {{ $util.format_date(item?.created_at) }}
               </td>
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] flex align-center md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap "
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] flex align-center md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                {{ item.amount }}
+                {{ item?.price }} {{ item?.Currency?.symbol }}
                 <button class="ml-[20px] w-[20px]">
                   <img
                     src="/src/assets/images/svg/Vector (19).svg"
@@ -77,45 +90,116 @@
             </tr> -->
           </tbody>
         </table>
-        <h5 class="text-[#015812] text-right py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[24px] max-w-[740px]:text-[16px] leading-[22.8px] tracking-[2px]">
-          1 - zal, 7- stol, hodim: Nurislombek Baxtiyorov
-        </h5>
+        <!-- <h5
+          class="text-[#015812] text-right py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[24px] max-w-[740px]:text-[16px] leading-[22.8px] tracking-[2px]"
+        >
+          1 - zal, 
+          7- stol, 
+        </h5> -->
+        <!-- <span></span> -->
       </div>
+      <!-- <Collapse :id="`collapse${item.id}`">
+        <div class="order-collapse">
+          <div class="order-collapse-wrapper">
+            <nav>
+              <ul>
+                <li>
+                  <span
+                    >{{ item?.Order?.Place?.title }}
+                    {{ item?.Order?.Table?.title }}- stol</span
+                  >
+                  <span>hodim: {{ item?.User?.fullname }}</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </Collapse> -->
 
       <!-- Add Button -->
-      <div class="flex justify-end">
-        <button
-          class="w-full h-[50px] max-w-[393px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
-        >
-          Tasdiqlash
-        </button>
-        <!-- <Button/> -->
-      </div>
     </div>
   </div>
+  <MenuModal ref="postKassa" @end="clear" />
 </template>
 
 <script>
 // import Button from "";
-
+import api from "@/server/api";
+import MenuModal from "modal-modal/src/MenuModal.vue";
 export default {
   components: {
     // Button,
+    MenuModal,
+  },
+  props: {
+    kassa: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
-      transactions: [
-        { kirim: "Kirim", date: "12.10.2024", amount: "150 000 so’m" },
-        { kirim: "Kirim", date: "13.10.2024", amount: "200 000 so’m" },
-        { kirim: "Kirim", date: "14.10.2024", amount: "250 000 so’m" },
-        { kirim: "Kirim", date: "15.10.2024", amount: "300 000 so’m" },
-        { kirim: "Kirim", date: "16.10.2024", amount: "350 000 so’m" },
-        { kirim: "Kirim", date: "17.10.2024", amount: "400 000 so’m" },
-        { kirim: "Kirim", date: "17.10.2024", amount: "400 000 so’m" },
-        { kirim: "Kirim", date: "17.10.2024", amount: "400 000 so’m" },
-      ],
+      kassa: {
+        cursor: 1,
+        size: 10,
+        count: 1,
+        data: [],
+      },
+      Incomes: {
+        cursor: 1,
+        size: 10,
+        count: 1,
+        data: [],
+      },
+      search: "",
     };
   },
+  watch: {
+    "$route.query.kassa_id": function () {
+      this.Incomes.cursor = 1;
+      this.Incomes.data = [];
+      this.getIncomes();
+    },
+  },
+  methods: {
+    getKassa() {
+      let param = {
+        cursor: this.kassa.cursor,
+        size: this.kassa.size,
+        search: this.search,
+      };
+      api.getKassa(param).then((res) => {
+        this.kassa.count = res.data.count;
+        this.kassa.data = this.kassa.data.concat(res.data.data);
+      });
+    },
+    getIncomes() {
+      let param = {
+        kassa_id: this.$route.query.kassa_id,
+        cursor: this.Incomes.cursor,
+        size: this.Incomes.size,
+      };
+      api.getIncomes(param).then((res) => {
+        this.Incomes.count = res.data.count;
+        this.Incomes.data = this.Incomes.data.concat(res.data.data);
+      });
+    },
+    clear() {
+      this.kassa = {
+        cursor: 1,
+        size: 10,
+        count: 1,
+        data: [],
+      };
+      this.getKassa();
+      this.getIncomes();
+    },
+  },
+  created() {
+    this.getKassa();
+    this.getIncomes();
+  },
+  mounted() {},
 };
 </script>
 

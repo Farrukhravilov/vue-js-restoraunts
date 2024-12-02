@@ -1,8 +1,4 @@
 <template>
-  <!-- <input v-model="newItem" placeholder="Enter item" />
-      <button @click="addItem">Add Item</button>
-      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-      <p v-if="successMessage" class="success">{{ successMessage }}</p> -->
   <div
     class="w-full max-w-[363px] h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
   >

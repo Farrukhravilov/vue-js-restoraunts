@@ -39,11 +39,11 @@ import PlacesCard from "places-card/src/PlacesCard.vue";
 import menuCard from "menu-card/src/MenuCard.vue";
 import api from "@/server/api";
 import store from "@/store";
-import menuModal from "modal-modal/src/menuModal.vue";
+// import menuModal from "modal-modal/src/menuModal.vue";
 export default {
   components: {
     PlacesCard,
-    menuModal,
+    // menuModal,
     menuCard,
   },
   data() {

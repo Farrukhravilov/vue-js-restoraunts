@@ -1,0 +1,6 @@
+{
+  "name": "kassa-modal",
+  "version": "1.0.0",
+  "main": "src/KassaModal.vue",
+  "private": true
+}

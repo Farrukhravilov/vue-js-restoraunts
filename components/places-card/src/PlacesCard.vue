@@ -61,7 +61,7 @@ export default {
       }
       return {
         width: `calc(${100 / slotsCount}% - ${this.borderWidth * 2}px)`,
-        border: `${this.borderWidth}px solid ##015812`,
+        border: `${this.borderWidth}px solid #015812`,
       };
     },
   },
@@ -69,12 +69,12 @@ export default {
 </script>
 
 <style scoped>
-/* .container {
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-} */
+}
 .slot-wrapper {
   /* display: flex; */
   justify-content: center;
