@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div
-    class="worker-card w-full max-w-[390px] h-[143px] border border-[#015812] flex items-center justify-center rounded-[8px] bg-gray-200"
+    class="worker-card w-full max-w-[420px]  h-[143px] border border-[#015812] flex items-center justify-center rounded-[8px] bg-gray-200"
     :class="{ active: expence?.id == $route.query.id }"
   >
     <router-link
