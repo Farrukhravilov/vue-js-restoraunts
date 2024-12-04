@@ -68,9 +68,9 @@ export default {
         />
       </div>
     </div>
-    <div class="flex flex-wrap gap-[20px] ml-[20px]">
-      <div v-for="item in workers?.data" :key="item">
-        <workerCard :info="item" />
+    <div class="">
+      <div class="flex flex-wrap gap-[20px] ml-[20px]">
+        <workerCard :info="item"  v-for="item in workers?.data" :key="item" />
       </div>
     </div>
     <div class="flex items-end justify-end h-[50%] mr-[20px]">

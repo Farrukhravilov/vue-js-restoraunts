@@ -4,7 +4,7 @@ import login from "@/views/login.vue";
 
 import workers from "@/views/workers.vue";
 // import addWorker from "@/views/addWorker.vue";
-// import editWorker from "@/views/editWorker.vue";
+import editWorker from "@/views/editWorker.vue";
 // import kassa from "@/views/kassa.vue";
 // import kassaType from "@/views/kassaType.vue";
 import placesDetail from "@/views/placesDetail.vue";
@@ -185,11 +185,11 @@ const router = createRouter({
     //   name: "addWorker",
     //   component: addWorker,
     // },
-    // {
-    //   path: "/editWorker",
-    //   name: "editWorker",
-    //   component: editWorker,
-    // },
+    {
+      path: "/editWorker",
+      name: "editWorker",
+      component: editWorker,
+    },
     // {
     //   path: "/Menu",
     //   name: "Menu",

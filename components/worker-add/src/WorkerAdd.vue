@@ -15,98 +15,103 @@
     </div>
 
     <form
-      class="mt-12 w-full flex gap-16 bg-white p-6 rounded-lg max-780:flex-col"
+      class="mt-12 w-full flex flex-col gap-16 bg-white p-6 rounded-lg max-780:flex-col"
       @submit.prevent="createWorker"
     >
-      <div
-        class="flex flex-col items-center border border-gray-300 w-full h-[280px] rounded-[30px] bg-white mb-[20px]"
-      >
-        <img
-          src="/src/assets/images/png/Vector (2).png"
-          class="mt-[43px]"
-          alt=""
-          :class="{ 'add-style-def-img': profileImageUrl == null }"
-          :src="profileImageUrl || defImg"
-        />
+      <div class="flex gap-[20px]">
         <div
-          class="p-2 bottom-[-20px] bg-white rounded-[7px] shadow-md text-gray-500 hover:text-gray-700 focus:outline-none"
+          class=" relative flex flex-col items-center w-[70%] border border-gray-300 w-full h-[280px] rounded-[30px] bg-white mb-[20px]"
         >
           <img
-            src="/src/assets/images/svg/Vector (14).svg"
-            alt="photo detector "
+            src="/src/assets/images/png/Vector (2).png"
+            class="mt-[43px]"
+            alt=""
+            :class="{ 'add-style-def-img': profileImageUrl == null }"
+            :src="profileImageUrl || defImg"
           />
-          <input
-            class="file-inp"
-            type="file"
-            @change="onFileChange"
-            id="urlimg"
-            accept="image/*"
-          />
-          <label class="img-url-leb" for="urlimg"></label>
+          <div
+            class="w-[70%] pointer rounded-[7px] text-gray-500 hover:text-gray-700 focus:outline-none"
+          >
+            <img
+              src="/src/assets/images/svg/Vector (14).svg"
+              alt="photo detector "
+              class="absolute left-[46%] top-[92%] "
+            />
+            <input
+              class="w-[50px] absolute left-[46%] top-[95%] opacity-[0%]"
+              type="file"
+              @change="onFileChange"
+              id="urlimg"
+              accept="image/*"
+            />
+            <label class="img-url-leb" for="urlimg"></label>
+          </div>
         </div>
-      </div>
-      <div class="w-full">
-        <div class="mb-4">
-          <label class="block font-medium text-[15px] text-[#015812] mb-1"
-            >Hodim ismi</label
-          >
-          <input
-            type="text"
-            class="w-full border border-[#015812] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            v-model="name"
-          />
-        </div>
-        <!-- Поле ввода: Hodim telefon raqami -->
-        <div class="mb-4">
-          <label class="block font-medium text-[15px] text-[#015812] mb-1"
-            >Hodim telefon raqami</label
-          >
-          <input
-            type="text"
-            v-model="phone"
-            @input="mask"
-            @focus="mask"
-            @blur="mask"
-            placeholder="+998 (__) ___-__-__"
-            class="w-full border border-[#015812] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <!-- Поле ввода: Lavozim -->
-        <div class="mb-6">
-          <label
-            for="role"
-            class="block font-medium text-[15px] text-[#015812] mb-1"
-            >Lavozim</label
-          >
-          <select
-            v-model="role"
-            class="w-full border border-[#015812] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option
-              v-for="option in roles"
-              :key="option.value"
-              :value="option.value"
+        <div class="w-full">
+          <div class="mb-4">
+            <label class="block font-medium text-[15px] text-[#015812] mb-1"
+              >Hodim ismi</label
             >
-              {{ option.label }}
-            </option>
-            <!-- Добавьте другие варианты при необходимости -->
-          </select>
+            <input
+              type="text"
+              class="w-full border border-[#015812] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              v-model="name"
+            />
+          </div>
+          <!-- Поле ввода: Hodim telefon raqami -->
+          <div class="mb-4">
+            <label class="block font-medium text-[15px] text-[#015812] mb-1"
+              >Hodim telefon raqami</label
+            >
+            <input
+              type="text"
+              v-model="phone"
+              @input="mask"
+              @focus="mask"
+              @blur="mask"
+              placeholder="+998 (__) ___-__-__"
+              class="w-full border border-[#015812] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Поле ввода: Lavozim -->
+          <div class="mb-6">
+            <label
+              for="role"
+              class="block font-medium text-[15px] text-[#015812] mb-1"
+              >Lavozim</label
+            >
+            <select
+              v-model="role"
+              class="w-full border border-[#015812] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option
+                v-for="option in roles"
+                :key="option.value"
+                :value="option.value"
+              >
+                {{ option.label }}
+              </option>
+              <!-- Добавьте другие варианты при необходимости -->
+            </select>
+          </div>
+          <!-- Кнопка -->
+          <!-- <div class="flex justify-center">
+            <button
+              class="w-full py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
+            >
+              Tasdiqlash
+            </button>
+          </div> -->
         </div>
-        <!-- Кнопка -->
-        <!-- <div class="flex justify-center">
-          <button
-            class="w-full py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
-          >
-            Tasdiqlash
-          </button>
-        </div> -->
       </div>
-      <button
-        class="w-full max-w-[343px] text-[36px] py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
-      >
-        Tasdiqlash
-      </button>
+      <div class="flex items-center justify-center">
+        <button
+          class="w-full max-w-[343px] text-[36px] py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
+        >
+          Tasdiqlash
+        </button>
+      </div>
     </form>
   </div>
 </template>

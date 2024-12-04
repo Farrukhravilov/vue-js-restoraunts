@@ -1,0 +1,6 @@
+{
+  "name": "expence-harajat",
+  "version": "1.0.0",
+  "main": "src/ExpenceHarajat.vue",
+  "private": true
+}

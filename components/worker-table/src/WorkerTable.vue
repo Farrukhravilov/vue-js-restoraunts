@@ -9,24 +9,27 @@
           <img src="/src/assets/images/svg/Vector (18).svg" alt="" />
         </button>
         <div class="flex items-center gap-[12px]">
-          <img src="/src/assets/images/svg/image 4.svg" alt="" />
-          <span class="md:text-[20px] max-w-[745px]:text-[14px]"> Olimjon Saidov ko’rsatkichlari </span>
+          <img class="w-[50px] h-[50px]" :src="workerInfo?.img" alt="" />
+          <span class="md:text-[20px] max-w-[745px]:text-[14px]">
+            {{ workerInfo?.fullname }}
+          </span>
         </div>
-        <div class="flex gap-[41px] max-w-[745px]:gap-[30px]">
-              <button>
-                <img src="/src/assets/images/svg/Vector (22).svg" alt="" />
-              </button>
-              <button>
-                <img src="/src/assets/images/svg/Vector (24).svg" alt="" />
-              </button>
-              <button>
-                <img src="/src/assets/images/svg/wpforms.svg" alt="" />
-              </button>
+        <div class="flex items-center gap-[41px] max-w-[745px]:gap-[30px]">
+          <button @click="store.state.deleteUserModal = true">
+            <img src="/src/assets/images/svg/Vector (22).svg" alt="" />
+          </button>
+          <router-link class="flex items-center" :to="{ path: '/editWorker', query: { id: workerInfo?.id } }">
+            <button>
+              <img src="/src/assets/images/svg/Vector (24).svg" alt="" />
+            </button>
+          </router-link>
+          <button @click="store.state.userInfoModal = true">
+            <img src="/src/assets/images/svg/wpforms.svg" alt="" />
+          </button>
         </div>
       </div>
-
       <!-- Table -->
-      <div class="overflow-auto w-full ">
+      <div class="overflow-auto w-full">
         <table class="w-full border-collapse text-sm">
           <thead class="bg-[#015812]/50 text-[#015812]">
             <tr>
@@ -47,22 +50,26 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="item in 8" :key="item" class="w-full">
-            <tr class="border-b border-[#015812]">
+          <tbody v-for="item in ordersWorker" :key="item" class="w-full">
+            <tr
+              :toggle-collapse="`collapse${item.id}`"
+              @click="workerFoods(item)"
+              class="border-b border-[#015812]"
+            >
               <td
                 class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                1 - zal, 7- stol
+                {{ item?.Place?.title }}, {{ item?.Table?.title }}
               </td>
               <td
                 class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                12.10.2024
+                {{ item?.created_at }}
               </td>
               <td
                 class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                150 000 so’m
+                {{ item?.total_price }} {{ item?.Currency?.symbol }}
                 <button class="ml-[20px] w-[20px]">
                   <img
                     src="/src/assets/images/svg/Vector (19).svg"
@@ -175,69 +182,135 @@
           </div>
         </div>
       </div>
-
-      <!-- Add Button -->
-      <!-- <div class="mt-[156px] flex justify-end">
-        <button
-          class="w-full h-[50px] max-w-[393px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
-        >
-          Tasdiqlash
-        </button>
-      </div> -->
+      <WorkerDelete
+        v-if="store.state.deleteUserModal"
+        :workerInfDel="workerInfo"
+      />
+      <WorkerCode v-if="store.state.userInfoModal" :workerInf="workerInfo" />
     </div>
   </div>
 </template>
 
 <script>
+import store from "@/store";
+import api from "@/server/api";
+
+import WorkerDelete from "worker-delete/src/WorkerDelete.vue";
+import WorkerCode from "worker-qr-code/src/WorkerCode.vue";
+import html2pdf from 'html2pdf.js';
 export default {
+  components: {
+    WorkerDelete,
+    WorkerCode,
+  },
+  props: {
+    table: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
-      rows: [
-        {
-          title: "1 - zal, 7- stol",
-          date: "12.10.2024",
-          amount: "150 000 so’m",
-          client: "Иван Иванов",
-          contact: "+998 90 123 45 67",
-          comments: "Предоплата внесена.",
-          isShown: false, // Управляет видимостью
-        },
-        {
-          title: "2 - zal, 8- stol",
-          date: "15.10.2024",
-          amount: "200 000 so’m",
-          client: "Мария Смирнова",
-          contact: "+998 91 987 65 43",
-          comments: "Оплачено полностью.",
-          isShown: false,
-        },
-        {
-          title: "3 - zal, 5- stol",
-          date: "18.10.2024",
-          amount: "180 000 so’m",
-          client: "Олег Петров",
-          contact: "+998 93 111 22 33",
-          comments: "Без предоплаты.",
-          isShown: false,
-        },
-      ],
+      workerInfo: {},
+      users: {},
+      store: store,
+      ordersWorker: {},
+      foodInfo: {},
+      searchVal: "",
+      workerFoodsInfo: {
+        cursor: 1,
+        size: 10,
+        count: 1,
+        data: [],
+      },
+      workers: {
+        cursor: 1,
+        size: 10,
+        count: 1,
+        data: [],
+      },
     };
   },
-//   methods: {
-//     toggleAccordion(index) {
-//       // Сбрасываем все `isShown`, кроме выбранного
-//       this.rows = this.rows.map((row, i) => ({
-//         ...row,
-//         isShown: i === index ? !row.isShown : false,
-//       }));
-//     },
-//   },
+  watch: {
+    "$route.query.id"(newId, oldId) {
+      if (newId !== oldId) {
+        this.workerDetail();
+      }
+    },
+  },
+  methods: {
+    workerDetail() {
+      api.workerDetail(this.$route.query.id).then((res) => {
+        this.workerInfo = res.data;
+      });
+    },
+
+    workerOrders() {
+      const params = {
+        cursor: 1,
+        size: 10,
+        id: this.$route.query.id,
+      };
+
+      api.workerOrders(params).then((res) => {
+        this.ordersWorker = res?.data?.data;
+        console.log(res);
+      });
+    },
+
+    workerFoods(item) {
+      const params = {
+        size: item.foods?.size || 10,
+        cursor: item.foods?.cursor || 1,
+        id: item.id,
+      };
+      api.workerFoods(params).then((res) => {
+        item.foods = {
+          cursor: 1,
+          size: 10,
+          count: 1,
+          data: [],
+        };
+        item.foods.count = res.data.count;
+        item.foods.data = item.foods?.data?.concat(res.data.data);
+      });
+    },
+
+    allWorkers() {
+      const params = {
+        size: this.workers?.size,
+        cursor: this.workers?.cursor,
+        fullname: this.searchVal,
+      };
+      api.allWorkers(params).then((res) => {
+        this.workers.count = res.data.count;
+        this.workers.data = this.workers.data.concat(res.data.data);
+      });
+    },
+
+    clear() {
+      this.workers = {
+        cursor: 1,
+        size: 10,
+        count: 1,
+        data: [],
+      };
+      this.allWorkers();
+    },
+  },
+  created() {
+    this.allWorkers();
+  },
+  mounted() {
+    this.workerDetail();
+    this.workerOrders();
+  },
 };
 </script>
 
 <style>
 /* Для плавного открытия/закрытия */
-tr[style*="display: none"] {
+/* tr[style*="display: none"] {
   display: table-row !important;
   opacity: 0;
   height: 0;
@@ -249,5 +322,5 @@ tr[style*="display: block"] {
   opacity: 1;
   height: auto;
   transition: all 0.3s ease-in-out;
-}
+} */
 </style>

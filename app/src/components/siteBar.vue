@@ -152,4 +152,13 @@ export default {
   </div>
 </template>
 
-<style></style>
+<style lang="scss">
+.active {
+  background: rgba(1, 88, 18, 0.2);
+  border: 1px solid rgb(1, 88, 18);
+  width:100%;
+  height: 70px;
+  border-radius:6px;
+  transition: all .3s ease;
+}
+</style>

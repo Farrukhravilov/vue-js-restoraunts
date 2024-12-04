@@ -1,0 +1,6 @@
+{
+  "name": "expence-put",
+  "version": "1.0.0",
+  "main": "src/ExpencePut.vue",
+  "private": true
+}

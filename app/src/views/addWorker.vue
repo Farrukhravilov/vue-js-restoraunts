@@ -201,7 +201,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex gap-[10px] w-full h-[80vh]">
+  <div class="flex gap-[10px] w-[97%] h-[80vh]">
     <div
       class="workers-main flex flex-col gap-[20px] w-[30%] border border-[#015812] rounded-[10px] h-[80vh]"
     >
@@ -217,17 +217,12 @@ export default {
           />
         </div>
       </div>
-      <div
-        v-for="item in workers?.data"
-        class="flex justify-center"
-        :key="item"
-      >
-        <WorkerCard :info="item" />
+      <div class="overflow-y-auto max-h-[540px]">
+        <div class="flex flex-col items-center gap-[25px] justify-center">
+          <WorkerCard :info="item" v-for="item in workers?.data" :key="item" />
+        </div>
       </div>
-      <div
-        to="/addWorker"
-        class="flex items-end justify-center h-[65%] mr-[20px]"
-      >
+      <div to="/addWorker" class="flex items-end justify-center mr-[20px]">
         <button
           class="w-full max-w-[343px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px] hover:bg-[#fff] transition-all duration-300 hover:text-[#015812] hover:opacity-80"
         >
@@ -235,7 +230,7 @@ export default {
         </button>
       </div>
     </div>
-    <WorkerAdd  :add="item" />
+    <WorkerAdd :add="item" />
   </div>
 </template>
 

@@ -1,120 +1,130 @@
 <template>
-  <div class="border border-[#015812] rounded-[10px] h-[80vh]">
-    <div class="bg-white w-full max-w-4xl rounded-lg md:p-6 max-w-[740px]:p-3">
-      <!-- Header -->
+  <div class="border border-[#015812] w-full rounded-[10px] h-[80vh]">
+    <div class="bg-white w-full p-6 rounded-lg">
       <div
-        class="font-bold text-[#015812] pb-2 mb-4 flex align-center items-center p-5 justify-between md:text-[24px] max-w-[740px]:text-[19px]"
+        class="text-[24px] font-bold text-[#015812] border-b border-[#015812] flex items-center justify-between pb-2 mb-4"
       >
-        Svet harajatlari
-        <button
-          class="border border-[#d3b002] w-[50px] h-[50px] bg-[#d3b002]/10 flex items-center justify-center rounded-[3px]"
-        >
-          <img src="/src/assets/images/svg/Vector (20).svg" alt="" />
-        </button>
+        <div class="flex items-center gap-[12px]">
+          <span class="md:text-[20px] max-w-[745px]:text-[14px]">
+            {{ expensee?.title }}
+          </span>
+        </div>
       </div>
 
-      <!-- Table -->
-      <div class="overflow-auto">
+      <div class="overflow-auto w-full">
         <table class="w-full border-collapse text-sm">
           <thead class="bg-[#015812]/50 text-[#015812]">
             <tr>
-              <th class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left">Stol</th>
-              <th class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left">sana</th>
-              <th class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left">summa</th>
+              <th
+                class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left"
+              >
+                Stol
+              </th>
+              <th
+                class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left"
+              >
+                sana
+              </th>
+              <th
+                class="py-2 px-4 font-inter text-[14px] font-medium leading-[16.94px] text-left"
+              >
+                summa
+              </th>
             </tr>
           </thead>
-          <tbody>
-            <!-- Row Template -->
+          <tbody class="w-full">
             <tr
-              v-for="(item, index) in transactions"
-              :key="index"
-              class="border-b border-[#015812] sm:overflow-visible"
+              v-for="item in groupsIncomes.data"
+              :key="item"
+              class="border-b border-[#015812]"
             >
               <td
-              class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812]  md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap "
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                {{ item.kirim }}
+                {{ $util.format_date(item?.created_at) }}
               </td>
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap "
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                {{ item.date }}
+                {{ $util.currency(item?.price) }} {{ item?.Currency?.symbol }}
               </td>
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] flex align-center md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap "
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
               >
-                {{ item.amount }}
-                <button class="ml-[20px] w-[20px]">
-                  <img
-                    src="/src/assets/images/svg/Vector (19).svg"
-                    alt="arrow right btn"
-                  />
-                </button>
+                {{ item?.comment }}
               </td>
             </tr>
-            <!-- <tr class="border-b border-[#015812]">
-              <td
-                class="py-2 px-4 font-jaldi text-[20px] font-normal leading-[33.8px] tracking-[5px] text-[#015812] text-[18px]"
-              >
-                Kirim
-              </td>
-              <td
-                class="py-2 px-4 font-jaldi text-[20px] font-normal leading-[33.8px] tracking-[5px] text-[#015812] text-[18px]"
-              >
-                12.10.2024
-              </td>
-              <td
-                class="py-2 px-4 font-jaldi text-[20px] font-normal leading-[33.8px] tracking-[5px] text-[#015812] text-[18px] flex align-center"
-              >
-                150 000 so’m
-                <button class="ml-[20px]">
-                  <img
-                    src="/src/assets/images/svg/Vector (19).svg"
-                    alt="arrow right btn"
-                  />
-                </button>
-              </td>
-            </tr> -->
           </tbody>
         </table>
-        <h5 class="text-[#015812] text-right py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[24px] max-w-[740px]:text-[16px] leading-[22.8px] tracking-[2px]">
-          1 - zal, 7- stol, hodim: Nurislombek Baxtiyorov
-        </h5>
-      </div>
-
-      <!-- Add Button -->
-      <div class="flex justify-end">
-        <button
-          class="w-full h-[50px] max-w-[393px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
-        >
-          Tasdiqlash
-        </button>
-        <!-- <Button/> -->
       </div>
     </div>
   </div>
 </template>
-
 <script>
-// import Button from "";
-
+import api from "@/server/api";
+import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
 export default {
-  components: {
-    // Button,
-  },
   data() {
     return {
-      transactions: [
-        { kirim: "Kirim", date: "12.10.2024", amount: "150 000 so’m" },
-        { kirim: "Kirim", date: "13.10.2024", amount: "200 000 so’m" },
-        { kirim: "Kirim", date: "14.10.2024", amount: "250 000 so’m" },
-        { kirim: "Kirim", date: "15.10.2024", amount: "300 000 so’m" },
-        { kirim: "Kirim", date: "16.10.2024", amount: "350 000 so’m" },
-        { kirim: "Kirim", date: "17.10.2024", amount: "400 000 so’m" },
-        { kirim: "Kirim", date: "17.10.2024", amount: "400 000 so’m" },
-        { kirim: "Kirim", date: "17.10.2024", amount: "400 000 so’m" },
-      ],
+      groups: {},
+      groupsIncomes: {},
+      groupsId: this.$route.query.id,
+      showAddTaomModal: false,
+      searchQuery: "",
+      cursor: 1,
+      size: 10,
+      expensee: null,
+      // selectedId: this.$route.query.selectedId,
+      // selectedTitle: '',
     };
+  },
+  methods: {
+    getExpenceGroups() {
+      const param = {
+        title: this.searchQuery,
+        cursor: this.cursor,
+        size: this.size,
+      };
+      api.getExpenceGroups(param).then((res) => {
+        this.groups = res;
+        this.expensee = res.data.data.find((e) => e.id == this.$route.query.id);
+        this.getGroupIncomes();
+      });
+    },
+    getGroupIncomes() {
+      const param = {
+        id: this.expensee?.id,
+      };
+      api.getGroupIncomes(param).then((res) => {
+        this.groupsIncomes = res.data;
+        // console.log(res);
+      });
+    },
+    ...mapActions(["toggleAddTaomModal"]),
+    ...mapMutations(["setActiveExpense"]),
+    selectExpense(id) {
+      this.setActiveExpense(id); // Сохраняем ID выбранного элемента
+    },
+    ...mapActions(["toggleExpenceCreate"]),
+  },
+  computed: {
+    ...mapState(["showAddTaomModal"]),
+    ...mapGetters(["getSelectedTitle"]),
+    selectedTitle() {
+      return this.getSelectedTitle; // Получаем значение из Vuex
+    },
+    ...mapState(["activeExpenseId"]),
+    // ...mapState(["showExpenceCreate"]),
+    ...mapState(["showExpenceCreate"]),
+  },
+  mounted() {
+    this.getExpenceGroups();
+  },
+  props: {
+    expences: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>

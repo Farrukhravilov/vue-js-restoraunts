@@ -5,6 +5,7 @@ import PlacesCard from "places-card/src/PlacesCard.vue";
 import WorkerCard from "worker-card/src/WorkerCard.vue";
 import workerdetailCards from "@/components/workerdetailCards.vue";
 import WorkerTable from "worker-table/src/WorkerTable.vue";
+import WorkerDelete from "worker-delete/src/WorkerDelete.vue";
 // import WorkerAdd from "worker-add/src/WorkerAdd.vue";
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
     WorkerCard,
     workerdetailCards,
     WorkerTable,
+    WorkerDelete,
     // WorkerAdd,
   },
   data() {
@@ -116,10 +118,10 @@ export default {
 <template>
   <div class="flex gap-[10px] w-full">
     <div
-      class="workers-main flex flex-col gap-[20px] w-[30%] border border-[#015812] rounded-[10px] h-[80vh]"
+      class="workers-main flex flex-col gap-[20px] w-[30%] border border-[#015812] rounded-[10px]"
     >
       <div class="flex gap-[20px] w-full">
-        <div class="flex justify-between w-full p-[30px]">
+        <div class="flex justify-between items-center w-full p-[30px]">
           <h2 class="text-[24px] text-[#015812]">Hodimlar</h2>
           <input
             type="text"
@@ -130,16 +132,16 @@ export default {
           />
         </div>
       </div>
-      <div
-        v-for="item in workers?.data"
-        class="flex justify-center"
-        :key="item"
-      >
-        <WorkerCard :info="item" />
+      <div class="overflow-y-auto max-h-[540px]">
+        <div
+          class="flex flex-col items-center gap-[20px] w-full border border-gray-300 justify-center"
+        >
+          <WorkerCard :info="item" v-for="item in workers?.data" :key="item" />
+        </div>
       </div>
       <router-link
         to="/addWorker"
-        class="flex items-end justify-center h-[40%] mr-[20px]"
+        class="flex items-end justify-center mr-[20px]"
       >
         <button
           class="w-full max-w-[343px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px] hover:bg-[#fff] transition-all duration-300 hover:text-[#015812] hover:opacity-80"
@@ -149,12 +151,13 @@ export default {
       </router-link>
     </div>
     <div class="w-[70%]">
-      <WorkerTable />
+      <WorkerTable :table="item" />
     </div>
     <!-- <WorkerAdd/> -->
   </div>
   <!-- <PlacesCard /> -->
   <workerdetailCards :info="item" />
+  <WorkerDelete v-if="store.state.deleteUserModal" :workerInfDel="workerInfo" />
 </template>
 
 <style></style>

@@ -37,18 +37,17 @@ export default {
       });
     },
     handleClick(id) {
-      this.selectedId = id; // Установите выбранный ID
+      this.selectedId = id;
     },
-    // ...mapMutations(["setActiveExpense"]),
     ...mapMutations(["setActiveExpense"]),
     selectExpense(id) {
-      this.setActiveExpense(id); // Сохраняем ID выбранного элемента
+      this.setActiveExpense(id);
     },
     ...mapMutations(["setSelectedTitle"]),
     handleClick(title) {
-      this.setSelectedTitle(title); // Сохраняем заголовок в Vuex
+      this.setSelectedTitle(title);
     },
-    ...mapActions(["toggleExpenceCreate"]), // действие для переключения состояния
+    ...mapActions(["toggleExpenceCreate"]),
   },
   mounted() {
     this.getExpenceGroups();
@@ -77,10 +76,9 @@ export default {
       </div>
       <div class="flex flex-wrap gap-[20px] pt-[20px] ml-[30px]">
         <ExpenceCard
-          :expence="item"
-          class=""
           v-for="item in groups?.data?.data"
           :key="item.id"
+          :expence="item"
           @click.native="selectExpense(item.id)"
         />
         <!-- <Pagination v-if="expence.length" v-model="expence" @get="getExpenceGroups" /> -->
@@ -88,12 +86,12 @@ export default {
       <div class="flex items-end justify-end mr-[20px]">
         <button
           class="w-full max-w-[380px] bg-[#79a684] py-1 px-4 text-[#fff] rounded-[8px] text-[20px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] font-inter font-normal leading-[48.41px] mt-[20px] hover:bg-[#fff] transition-all duration-300 hover:text-[#015812] hover:opacity-80"
-          @click="toggleExpenceCreate"
+          @click="$refs.addExp.open()"
         >
           Doimiy harajat qo’shish
         </button>
       </div>
-      <ExpenceCreate v-if="showExpenceCreate" :create="item" />
+      <ExpenceCreate ref="addExp" @end="getExpenceGroups" />
     </div>
   </div>
 </template>

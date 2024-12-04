@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-[363px] h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
+    class="w-full max-w-[403px] h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
   >
     <router-link
       :to="{ path: '/workerDetail', query: { id: info?.id } }"
