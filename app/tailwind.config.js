@@ -13,6 +13,9 @@ module.exports = {
     extend: {
       screens: {
         "max-1600": { max: "1600px" },
+        "max-1365": { max: "1365px" },
+        "max-1165": { max: "1165px" },
+        "max-1100": { max: "1100px" },
         "max-830": { max: "830px" },
         "max-780": { max: "780px" },
         "max-630": { max: "630px" },

@@ -78,13 +78,13 @@ export default {
       if (item) {
         this.request = "putMenu";
         this.menu = {
-          id: item.id,
+          id: this.$route.query.menu_id,
           title: item.title,
         };
       } else {
         this.request = "addMenu";
         this.menu = {
-          id: 0,
+          id: this.$route.query.menu_id,
           title: "",
         };
       }

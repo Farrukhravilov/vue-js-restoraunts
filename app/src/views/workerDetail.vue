@@ -134,7 +134,7 @@ export default {
       </div>
       <div class="overflow-y-auto max-h-[540px]">
         <div
-          class="flex flex-col items-center gap-[20px] w-full border border-gray-300 justify-center"
+          class="flex flex-col items-center gap-[20px] w-full border border-gray-300 justify-center mr-[15px] ml-[15px]" 
         >
           <WorkerCard :info="item" v-for="item in workers?.data" :key="item" />
         </div>

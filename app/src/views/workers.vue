@@ -54,26 +54,34 @@ export default {
 
 <template>
   <div
-    class="flex flex-col gap-[20px] w-full border border-[#015812] rounded-[10px] h-[80vh]"
+    class="flex flex-col gap-[20px] w-full border border-[#015812] rounded-[10px] h-[83vh]"
   >
     <div class="flex gap-[20px] w-full">
       <div class="flex justify-between w-full p-[30px]">
         <h2 class="text-[24px] text-[#015812]">Hodimlar</h2>
-        <input
-          type="text"
-          placeholder="qidiruv"
-          v-model="searchVal"
-          @input="clear"
-          class="text-[#015812] rounded-[6px] w-[200px] h-[30px] p-[10px] text-[16px] font-inter border border-gray-500 inline-block"
-        />
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Qidiruv"
+            class="border border-[#015812] relative rounded-[6px] h-[40px] py-[7px] pr-[7px] pl-[38px]"
+            v-model="searchVal"
+            @input="clear"
+          />
+          <img
+            class="absolute bottom-[9px] left-[11px] w-[20px] h-[20px]"
+            src="@/assets/images/svg/search.svg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
-    <div class="">
-      <div class="flex flex-wrap gap-[20px] ml-[20px]">
-        <workerCard :info="item"  v-for="item in workers?.data" :key="item" />
+    <div class="overflow-y-auto max-h-[600px]">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(390px,1fr))] gap-[20px] pl-[25px] pr-[15px] pt-[20px] max-520:grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))]
+      max-460:grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-460:pr-[5px] max-460:pl-5px">
+        <workerCard :info="item" v-for="item in workers?.data" :key="item" />
       </div>
     </div>
-    <div class="flex items-end justify-end h-[50%] mr-[20px]">
+    <div class="flex items-end justify-end mr-[20px] max-1600:mb-[20px]">
       <button
         class="w-full max-w-[343px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px] hover:bg-[#fff] transition-all duration-300 hover:text-[#015812] hover:opacity-80"
       >

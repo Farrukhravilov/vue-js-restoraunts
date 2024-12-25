@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-[403px] h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
+    class="w-full h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
   >
     <router-link
       :to="{ path: '/workerDetail', query: { id: info?.id } }"
@@ -22,11 +22,6 @@
           <span class="text-[#015812] text-[16px]">{{ info?.fullname }} </span>
         </div>
         <span class="text-[#015812] text-[16px]">{{ info?.role }}</span>
-        <!-- <a
-              href="#"
-              class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
-              >Jigar shashlik</a
-            > -->
         <p class="mt-2 text-[17px] text-[#015812]">{{ info?.phone }}</p>
       </div>
     </router-link>

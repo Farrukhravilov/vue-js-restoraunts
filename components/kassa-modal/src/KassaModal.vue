@@ -82,6 +82,7 @@
     >
       <button
         class="absolute w-[70px] h-[70px] border border-[#015812] rounded-[8px] flex items-center justify-center top-[-2px] bg-gray-100 right-[-100px] text-gray-500 hover:text-gray-700 max-780:hidden"
+        @click="openKassa = false"
       >
         <img src="/src/assets/images/svg/Vector (15).svg" alt="" />
       </button>
@@ -96,8 +97,8 @@
           }}
         </h2>
         <button
-          class="w-[70px] h-[70px] border hidden border-[#015812] rounded-[8px] flex items-center justify-center bg-gray-100 text-gray-500 hover:text-gray-700 max-780:flex max-780:w-[55px] h-[45px]"
           @click="openKassa = false"
+          class="w-[70px] h-[70px] border hidden border-[#015812] rounded-[8px] flex items-center justify-center bg-gray-100 text-gray-500 hover:text-gray-700 max-780:flex max-780:w-[55px] h-[45px]"
         >
           <img src="/src/assets/images/svg/Vector (15).svg" alt="" />
         </button>
@@ -137,9 +138,9 @@
             class="border mt-[22px] border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 w-full"
           />
         </div>
-        <div class="flex items-center justify-center mt-[280px]">
+        <div class="flex items-center justify-center">
           <button
-            class="w-full max-w-[343px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]" 
+            class="w-full max-w-[343px] bg-gray-300 absolute bottom-[70px] py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px]"
             type="submit"
           >
             Tasdiqlash

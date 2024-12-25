@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-[#015812] w-full rounded-[10px] h-[80vh]">
+  <div class="border border-[#015812] w-full rounded-[10px] h-[84vh]">
     <div class="bg-white w-full p-6 rounded-lg">
       <!-- Header -->
       <div
@@ -57,17 +57,17 @@
               class="border-b border-[#015812]"
             >
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap max-1600:tracking-[3px] max-1600:text-[16px] leading-[30.8px]"
               >
                 {{ item?.Place?.title }}, {{ item?.Table?.title }}
               </td>
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap max-1600:tracking-[3px] max-1600:text-[16px] leading-[30.8px]"
               >
                 {{ item?.created_at }}
               </td>
               <td
-                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap"
+                class="py-2 px-4 font-jaldi font-normal leading-[33.8px] tracking-[5px] text-[#015812] md:text-[20px] max-w-[740px]:text-[14px] whitespace-nowrap max-1600:tracking-[3px] max-1600:text-[16px] leading-[30.8px]"
               >
                 {{ item?.total_price }} {{ item?.Currency?.symbol }}
                 <button class="ml-[20px] w-[20px]">

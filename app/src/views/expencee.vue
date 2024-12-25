@@ -57,31 +57,32 @@ export default {
 
 <template>
   <div
-    class="flex flex-col gap-[20px] w-[97%] border border-[#015812] rounded-[10px] h-[80vh]"
-    :class="{ 'box-active': store.state.barShow }"
+    class="flex flex-col gap-[20px] w-[97%] border border-[#015812] rounded-[10px] h-[84vh]"
   >
     <div class="">
-      <div class="p-[30px] flex items-center gap-[100px]">
+      <div class="p-[30px] flex items-center gap-[100px] max-520:flex-col max-520:gap-[20px]">
         <h2 class="text-[24px] text-[#015812]">Chiqim</h2>
-        <div class="">
+        <div class="relative">
           <input
             type="text"
+            class="border border-[#015812] relative rounded-[6px] h-[40px] py-[7px] pr-[7px] pl-[38px]"
             placeholder="Qidiruv"
             v-model="searchQuery"
             @input="getExpenceGroups"
           />
-          <!-- {{ searchQuery }} -->
-          <img src="" alt="" />
+          <img class="absolute bottom-[9px] left-[11px] w-[20px] h-[20px]"  src="@/assets/images/svg/search.svg" alt="" />
         </div>
       </div>
-      <div class="flex flex-wrap gap-[20px] pt-[20px] ml-[30px]">
-        <ExpenceCard
-          v-for="item in groups?.data?.data"
-          :key="item.id"
-          :expence="item"
-          @click.native="selectExpense(item.id)"
-        />
-        <!-- <Pagination v-if="expence.length" v-model="expence" @get="getExpenceGroups" /> -->
+      <div class="overflow-y-auto max-h-[540px]">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(390px,1fr))] gap-[20px]  pl-[15px] pr-[15px]">
+          <ExpenceCard
+            v-for="item in groups?.data?.data"
+            :key="item.id"
+            :expence="item"
+            @click.native="selectExpense(item.id)"
+          />
+          <!-- <Pagination v-if="expence.length" v-model="expence" @get="getExpenceGroups" /> -->
+        </div>
       </div>
       <div class="flex items-end justify-end mr-[20px]">
         <button

@@ -1,0 +1,6 @@
+{
+  "name": "payments-card",
+  "version": "1.0.0",
+  "main": "src/PaymentsCard.vue",
+  "private": true
+}

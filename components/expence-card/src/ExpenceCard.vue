@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div
-    class="worker-card w-full max-w-[400px]  h-[143px] border border-[#015812] flex items-center justify-center rounded-[8px] bg-gray-200"
+    class="worker-card w-full h-[143px] border border-[#015812] flex items-center justify-center rounded-[8px] bg-gray-200"
     :class="{ active: expence?.id == $route.query.id }"
   >
     <router-link
@@ -33,11 +33,13 @@ export default {
       }"
       @click="reGet()"
     >
-      <div class="flex ">
+      <div class="flex">
         <div
           class="font-inter font-semibold text-[26px] leading-[29.05px] flex flex-col w-[100%] items-center justify-center gap-[25px] max-370:mt-[5px]"
         >
-          <h2 class="text-[22px] tracking-wide text-[#015812] text-center ">
+          <h2
+            class="text-[22px] tracking-wide font-semibold text-[#015812] text-center"
+          >
             {{ expence?.title }}
           </h2>
           <!-- <span class="text-[#015812] text-[16px]">
@@ -53,5 +55,7 @@ export default {
 <style lang="scss">
 .worker-card.active {
   background-color: rgba(1, 88, 18, 0.2);
+  width: 100% !important;
+  height: 143px !important;
 }
 </style>

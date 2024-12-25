@@ -11,7 +11,7 @@ export default {
 
 <template>
   <div
-    class="w-full max-w-[323px] h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
+    class="w-full h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
   >
     <router-link
       :to="{

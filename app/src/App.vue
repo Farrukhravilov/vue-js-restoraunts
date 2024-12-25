@@ -29,6 +29,8 @@ import FoodModal from "food-modal/src/FoodModal.vue";
 import TurnClocks from "turn-clock/src/TurnClocks.vue";
 import Places from "places/src/Places.vue";
 import siteBar from "./components/siteBar.vue";
+
+import siteHeader from "./components/siteHeader.vue";
 // import TurnClock from "vue-turn-clock";
 // import
 // import HallBtn from "hall-btn/src/HallBtn.vue";
@@ -37,6 +39,7 @@ import siteBar from "./components/siteBar.vue";
 
 export default {
   components: {
+    siteHeader,
     siteBar,
     CardInfo,
     menuCard,
@@ -72,6 +75,11 @@ export default {
       username: "",
     };
   },
+  computed: {
+    showHeaderAndFooter() {
+      return this.$route.name !== "login";
+    },
+  },
 };
 </script>
 
@@ -102,8 +110,9 @@ export default {
       <WorkerCard v-if="false" />
       <!-- Готовая Медия -->
       <FoodModal v-if="false" />
+      <siteHeader v-if="showHeaderAndFooter" />
       <div class="flex gap-[20px] w-full">
-        <siteBar />
+        <siteBar v-if="showHeaderAndFooter" />
         <router-view />
       </div>
       <!-- <Input

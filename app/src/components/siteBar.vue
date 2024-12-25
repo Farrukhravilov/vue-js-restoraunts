@@ -11,7 +11,7 @@ export default {
 
 <template>
   <div
-    class="flex flex-col w-36 h-[80vh] bg-green-50 border border-[#015812] rounded-[8px] ml-[10px]"
+    class="flex flex-col w-36 h-[84vh] bg-green-50 border border-[#015812] rounded-[8px] ml-[10px] max-830:fixed max-830:left-[-100%] max-830:ml-[0px] max-830:z-50"
     :class="{ 'left-menu-active': store.state.barShow }"
   >
     <div class="p-[30px]">
@@ -37,9 +37,9 @@ export default {
         </router-link>
 
         <router-link
-          to="/statictics"
+          to="/statictis"
           class="flex flex-col gap-[13px] items-center justify-center"
-          :class="{ active: $route.path == '/statictics' }"
+          :class="{ active: $route.path == '/statictis' }"
         >
           <img src="@/assets/images/svg/info.svg" alt="" />
           <span
@@ -137,7 +137,7 @@ export default {
           >
         </router-link>
 
-        <div
+        <!-- <div
           class="flex flex-col gap-[13px] items-center justify-center"
           @click="exitFunc()"
         >
@@ -146,7 +146,7 @@ export default {
             class="font-inter text-[16px] text-[#015812] font-medium leading-[12.1px] text-center decoration-none"
             >Hisobdan chiqish</span
           >
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -156,9 +156,13 @@ export default {
 .active {
   background: rgba(1, 88, 18, 0.2);
   border: 1px solid rgb(1, 88, 18);
-  width:100%;
+  width: 100%;
   height: 70px;
-  border-radius:6px;
-  transition: all .3s ease;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.left-menu-active {
+  left: 0;
+  transition: all 0.3s ease;
 }
 </style>

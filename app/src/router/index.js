@@ -10,7 +10,9 @@ import editWorker from "@/views/editWorker.vue";
 import placesDetail from "@/views/placesDetail.vue";
 // import placesDetailPrev from "@/views/placesDetailPrev.vue";
 import expence from "@/views/expence.vue";
-// import payments from "@/views/payments.vue";
+import payments from "@/views/payments.vue";
+import statictis from "@/views/statictis.vue";
+import profil from "@/views/profil.vue";
 // import Menu from "@/views/Menu.vue";
 // import MenuFoods from "@/views/MenuFoods.vue";
 // import editFood from "@/views/editFood.vue";
@@ -28,7 +30,7 @@ import expence from "@/views/expence.vue";
 // import placesAndTables from '@/views/placesAndTables.vue'
 
 // import { createRouter, createWebHistory } from 'vue-router'
-// import { useStore } from '@/stores/store'
+// import { useStore } from '@/stores/store';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +40,11 @@ const router = createRouter({
     //   name: "home",
     //   component: HomeView,
     // },
+    {
+      path: "/profil",
+      name: "/profil",
+      component: profil,
+    },
     {
       path: "/login",
       name: "login",
@@ -79,11 +86,16 @@ const router = createRouter({
       name: "expencee",
       component: () => import("@/views/expencee.vue"),
     },
-    // {
-    //   path: "/settings",
-    //   name: "settings",
-    //   component: () => import("@/views/settings.vue"),
-    // },
+    {
+      path: "/settings",
+      name: "settings",
+      component: () => import("@/views/settings.vue"),
+    },
+    {
+      path: "/statictis",
+      name: "statictis",
+      component: statictis,
+    },
     // {
     //   path: "/login",
     //   name: "login",
@@ -227,11 +239,11 @@ const router = createRouter({
     //   name: "placesDetailPrev",
     //   component: placesDetailPrev,
     // },
-    // {
-    //   path: "/payments",
-    //   name: "payments",
-    //   component: payments,
-    // },
+    {
+      path: "/payments",
+      name: "payments",
+      component: payments,
+    },
   ],
 });
 

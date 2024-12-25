@@ -222,13 +222,20 @@ export default {
       <div class="flex gap-[20px] w-full">
         <div class="flex justify-between w-full p-[30px]">
           <h2 class="text-[24px] text-[#015812]">Hodimlar</h2>
-          <input
-            type="text"
-            placeholder="qidiruv"
-            v-model="searchVal"
-            @input="clear"
-            class="text-[#015812] rounded-[6px] w-[200px] h-[30px] p-[10px] text-[16px] font-inter border border-gray-500 inline-block"
-          />
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Qidiruv"
+              v-model="searchVal"
+              @input="clear"
+              class="border border-[#015812] relative rounded-[6px] h-[40px] py-[7px] pr-[7px] pl-[38px]"
+            />
+            <img
+              class="absolute bottom-[9px] left-[11px] w-[20px] h-[20px]"
+              src="@/assets/images/svg/search.svg"
+              alt=""
+            />
+          </div>
         </div>
       </div>
       <div class="overflow-y-auto max-h-[540px]">

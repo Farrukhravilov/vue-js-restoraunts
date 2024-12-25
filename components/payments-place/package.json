@@ -1,0 +1,6 @@
+{
+  "name": "payments-place",
+  "version": "1.0.0",
+  "main": "src/PaymentsPlace.vue",
+  "private": true
+}

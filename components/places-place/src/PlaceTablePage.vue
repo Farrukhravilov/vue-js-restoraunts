@@ -1,5 +1,7 @@
 <template>
-  <div class="border border-[#015812] w-[836px] rounded-[10px] h-[80vh] max-830:w-full">
+  <div
+    class="border border-[#015812] w-[836px] rounded-[10px] h-[80vh] max-830:w-full"
+  >
     <div class="header flex align-center justify-between p-[20px]">
       <div class="text-center mb-4">
         <h1 class="text-[24px] text-[#015812]">1 - buyurtma</h1>
@@ -14,7 +16,7 @@
       <div class="w-[634px] bg-white p-6 rounded-lg w-96 max-630:w-full">
         <!-- <div class="text-center mb-4">
                 <h1 class="text-[40px] text-[#000000]">Hovli, 7-stol</h1>
-            </div> -->
+        </div> -->
         <div class="flex justify-between text-sm mb-2">
           <span>Hodim:</span>
           <span class="font-medium">Nurislombek Baxtiyorov</span>
@@ -54,7 +56,9 @@
           <span>Xizmat ko'rsatish haqqi: 0%</span>
           <span>0 so'm</span>
         </div>
-        <div class="text-center text-[40px] font-bold pt-2 text-[#015812] max-630:text-[30px] max-460:text-[25px]">
+        <div
+          class="text-center text-[40px] font-bold pt-2 text-[#015812] max-630:text-[30px] max-460:text-[25px]"
+        >
           Jami: 109,000 so'm
         </div>
         <!-- <button
@@ -64,7 +68,7 @@
             </button> -->
       </div>
     </div>
-    <div class="flex justify-end h-[38%]  items-end mr-[15px] max-1600:h-[20%]">
+    <div class="flex justify-end h-[38%] items-end mr-[15px] max-1600:h-[20%]">
       <button>
         <img src="/src/assets/images/svg/Vector (16).svg" />
       </button>
@@ -72,13 +76,6 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
+<script></script>
 
-const title = ref("My First Component");
-const description = ref(
-  "This is a simple example component from the components package."
-);
-</script>
-
-<style scoped></style>
+<style></style>

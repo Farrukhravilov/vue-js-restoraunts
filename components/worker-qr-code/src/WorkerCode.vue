@@ -37,11 +37,7 @@
         alt="asdasd"
       />
       <div class="flex align-center justify-center mt-[110px]">
-        <img
-          :src="workerInf?.img"
-          class="h-[230px]"
-          alt=""
-        />
+        <img :src="workerInf?.img" class="h-[230px]" alt="" />
       </div>
       <div>
         <h5
@@ -85,7 +81,7 @@
 import QRCodeVue3 from "qrcode-vue3";
 import ButtonDownload from "button-download/src/ButtonDownload.vue";
 import store from "@/store";
-import html2pdf from 'html2pdf.js';
+import html2pdf from "html2pdf.js";
 export default {
   name: "QRCodeVue3Example",
   components: {

@@ -1,0 +1,6 @@
+{
+  "name": "places-stol",
+  "version": "1.0.0",
+  "main": "src/PlacesStol.vue",
+  "private": true
+}

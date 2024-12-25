@@ -14,7 +14,7 @@ export default {
 
 <template>
   <div
-    class="worker-card w-full max-w-[323px] h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
+    class="worker-card w-full h-[143px] border border-[#015812] rounded-[8px] bg-gray-200"
     :class="{ active: $route.query.kassa_id == item.id }"
     v-for="item in kassa?.data"
     :key="item"
@@ -36,9 +36,9 @@ export default {
           <div
             class="text-[22px] tracking-wide text-sm text-indigo-500 font-semibold text-[#015812]"
           >
-            <span class="text-[#015812] text-[16px]">{{ item?.title }}</span>
+            <span class="text-[21px] tracking-wide font-semibold text-[#015812]">{{ item?.title }}</span>
           </div>
-          <span class="text-[#015812] text-[16px]">
+          <span class="text-[21px] tracking-wide font-semibold text-[#015812]">
             {{ $util.currency(item?.balance) }}
             {{ item?.currency_symbol }}</span
           >

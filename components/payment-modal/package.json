@@ -1,0 +1,6 @@
+{
+  "name": "payment-modal",
+  "version": "1.0.0",
+  "main": "src/PaymentModal.vue",
+  "private": true
+}

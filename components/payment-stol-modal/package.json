@@ -1,0 +1,6 @@
+{
+  "name": "payment-stol-modal",
+  "version": "1.0.0",
+  "main": "src/PaymentStolModal.vue",
+  "private": true
+}

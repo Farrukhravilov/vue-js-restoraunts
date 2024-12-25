@@ -1,14 +1,15 @@
 <script>
-// import Table from "@/components/Table.vue";
 import api from "@/server/api";
 import placesCard from "@/components/placesCard.vue";
-// import PostPlaces from "@/components/PostPlaces.vue";
-// import RemovePlaces from "@/components/Modal/RemovePlaces.vue";
+import PlacesStol from "places-stol/src/PlacesStol.vue";
+import PlacesModal from "places-modal/src/PlacesModal.vue";
 import store from "@/store";
 export default {
   components: {
     // Table,
     placesCard,
+    PlacesStol,
+    PlacesModal,
     // PostPlaces,
     // RemovePlaces,
   },
@@ -53,85 +54,82 @@ export default {
 </script>
 
 <template>
-  <div class="worker-detail" :class="{ 'box-active': store.state.barShow }">
-    <div class="worker-detail-wrapper">
-      <div class="workers-main workers-main-detail tables-wrapper">
-        <div class="workers">
-          <div class="workers-wrapper">
-            <div class="workers-header">
-              <h2>Menu</h2>
-              <div class="workers-headers-search">
-                <input
-                  type="text"
-                  placeholder="Qidiruv"
-                  v-model="search"
-                  @input="clear"
-                />
-                <!-- <img src="@/assets/images/svg/search.svg" alt="" /> -->
-              </div>
-            </div>
+  <div class="flex gap-[10px] w-[89%]">
+    <div
+      class="flex flex-col gap-[20px] w-[37%] border border-[#015812] rounded-[10px] h-[84vh]"
+    >
+      <div class="flex items-center p-[30px] justify-between">
+        <h2 class="text-[24px] text-[#015812]">Menu</h2>
+        <div class="relative">
+          <input
+            type="text"
+            class="border border-[#015812] relative rounded-[6px] h-[40px] py-[7px] pr-[7px] pl-[38px]"
+            placeholder="Qidiruv"
+            v-model="search"
+            @input="clear"
+          />
 
-            <div class="workers-cards-wrapper worker-detail-cards-wrapper">
-              <placesCard
-                v-for="item in data?.data"
-                :key="item"
-                :places="item"
-              />
-              <!-- <Pagination
-                v-if="data?.data?.length"
-                v-model="data"
-                @get="getPlaces"
-              /> -->
-            </div>
-
-            <!-- @click="$refs.postPlaces.open('create')" -->
-            <div
-              class="add-Places-Btn"
-            >
-              <div class="btn-wrp">
-                <button class="add-emp-btn add-Places-Btn">
-                  Joy turini qo’shish
-                </button>
-              </div>
-            </div>
-          </div>
+          <img
+            class="absolute bottom-[9px] left-[11px] w-[20px] h-[20px]"
+            src="@/assets/images/svg/search.svg"
+            alt=""
+          />
         </div>
       </div>
-      <div class="worker-info tables-info">
-        <div class="worker-info-wrapper">
-          <div class="worker-info-header">
-            <div class="worker-pic-and-back-btn">
-              <div class="worker-pic">
-                <h2>
-                  {{ $route.query.title }} {{ $route?.query.tables }} ta stol
-                </h2>
-              </div>
-            </div>
-            <!-- @click="$refs.postPlaces.open('edit')" -->
-            <div class="worker-action menu-action">
-              <button class="yel-edit" >
-                <img src="" alt="" />
-              </button>
-              <button class="red-x" @click="$refs.removePlaces.open()">
-                <img src="" alt="" />
-              </button>
-              <!-- @click="$refs.removePlaces.open()" -->
-            </div>
+      <div class="overflow-y-auto max-h-[540px]">
+        <div class="flex flex-col gap-[20px] items-center justify-center">
+          <placesCard v-for="item in data?.data" :key="item" :places="item" />
+          <!-- <Pagination
+                  v-if="data?.data?.length"
+                  v-model="data"
+                  @get="getPlaces"
+                /> -->
+        </div>
+      </div>
+
+      <!-- @click="$refs.postPlaces.open('create')" -->
+      <div class="flex justify-center">
+        <button
+          @click="$refs.postPlaces.open()"
+          class="w-full max-w-[343px] bg-gray-300 py-2 px-4 text-[#015812] rounded-[8px] font-semibold rounded-md focus:outline-none border border-[#015812] rounded-[8px] mt-[20px] hover:bg-[#fff] transition-all duration-300 hover:text-[#015812] hover:opacity-80"
+        >
+          Joy turini qo’shish
+        </button>
+      </div>
+    </div>
+    <div class="border border-[#015812] w-full rounded-[10px] h-[84vh]">
+      <div class="p-[30px]">
+        <div class="flex items-center justify-between">
+          <div class="worker-pic">
+            <h2 class="text-[24px] text-[#015812]">
+              {{ $route.query.title }} {{ $route?.query.tables }} ta stol
+            </h2>
           </div>
-          <span class="linie"></span>
-          <div class="menu-cards-wrapper">
-            <div class="table-cards">
-              <!-- <Table /> -->
-            </div>
+          <div class="flex items-center">
+            <button
+              class="border border-[#d3b002] w-[50px] h-[50px] bg-[#d3b002]/10 flex items-center justify-center rounded-[3px]"
+              @click="$refs.postPlaces.open('edit')"
+            >
+              <img src="/src/assets/images/svg/Vector (20).svg" alt="" />
+            </button>
+            <button>
+              <img src="" alt="" />
+            </button>
+            <!-- @click="$refs.removePlaces.open()" -->
           </div>
+        </div>
+        <!-- @click="$refs.postPlaces.open('edit')" -->
+      </div>
+      <div class="menu-cards-wrapper">
+        <div class="table-cards">
+          <PlacesStol />
         </div>
       </div>
     </div>
-    <!-- <PostPlaces ref="postPlaces" @end="clear" /> -->
-    <!-- <RemovePlaces ref="removePlaces" @end="clear" /> -->
   </div>
+  <PlacesModal ref="postPlaces" @end="getPlaces" />
+  <!-- <PostPlaces ref="postPlaces" @end="clear" /> -->
+  <!-- <RemovePlaces ref="removePlaces" @end="clear" /> -->
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

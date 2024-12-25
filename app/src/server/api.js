@@ -46,6 +46,9 @@ export default {
     const size = p.size ? `&size=${p.size}` : ``;
     return server(`v1/menus?${cursor}${size}${title}`, "get");
   },
+  me(p = query) {
+    return server(`me`, "get");
+  },
   // getProducts(p = query) {
   //   return server(`v1/products`, "get");
   //   let title = p.title ? `&title=${p.title}` : ``;
@@ -122,14 +125,23 @@ export default {
       "get"
     );
   },
+  // workers
   deleteWorker(id) {
     return server(`v1/user/${id}`, "delete");
   },
   updateWorker(id) {
     return server(`v1/user/${id}`, "put");
   },
+  // update
   updateExpense(data) {
     return server(`v1/expense_groups/${data.id}`, "put", data);
+  },
+  // settings
+  getSettings(p = query) {
+    return server(`v1/settings`, "get");
+  },
+  updateSettings(data) {
+    return server(`v1/settings`, "put", data);
   },
   // Joylar
   places(p = query) {

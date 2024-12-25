@@ -1,10 +1,9 @@
 {
-    "name": "menu-edit",
-    "version": "1.0.0",
-    "main": "src/ModalEdit.vue",
-    "private": true,
-    "dependencies": {
-      "axios": "^1.7.7"
-    }
+  "name": "menu-edit",
+  "version": "1.0.0",
+  "main": "src/ModalEdit.vue",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.7.7"
   }
-  
+}

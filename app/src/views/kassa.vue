@@ -53,21 +53,22 @@ export default {
 
 <template>
   <div
-    class="flex flex-col gap-[20px] w-full border border-[#015812] rounded-[10px] h-[80vh]"
+    class="flex flex-col gap-[20px] w-full border border-[#015812] rounded-[10px] h-[84vh]"
     :class="{ 'box-active': store.state.barShow }"
   >
     <div class="p-[30px]">
       <div class="text-[24px] text-[#015812]">
         <h2>Kassa</h2>
       </div>
-
-      <div class="flex flex-wrap gap-[20px] pt-[20px]">
-        <kassaCard :kassa="kassa" />
-        <!-- <Pagination
-            v-if="kassa.data.length"
-            v-model="kassa"
-            @get="getKassa"
-          /> -->
+      <div class="overflow-y-auto max-h-[600px]">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(390px,1fr))] gap-[20px] pr-[15px] pt-[20px]">
+          <kassaCard :kassa="kassa" />
+          <!-- <Pagination
+              v-if="kassa.data.length"
+              v-model="kassa"
+              @get="getKassa"
+            /> -->
+        </div>
       </div>
       <div class="flex items-end justify-end">
         <button
